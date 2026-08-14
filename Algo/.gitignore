@@ -1,0 +1,18 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.*
+
+# Backend (future Spring Boot module)
+backend/target/
+backend/.env
+
+# Local tooling and editors
+.idea/
+.vscode/
+*.iml
+*.log
+
+# Local runtime cache
+work/

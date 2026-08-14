@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: algovisual-api
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/algovisual?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:Krish@1721}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: never
+
+app:
+  cors:
+    allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:5173}
+  jwt:
+    secret: ${JWT_SECRET:SeMZOjXnflBCwbM26S8/HaF22vYzCneAfZQ6pG/UY1pvzb6kwERQbfgT8v1KtApMhRN1x0Lt2bxTpyF7prNCEA==}
+    expiration-ms: ${JWT_EXPIRATION_MS:3600000}
