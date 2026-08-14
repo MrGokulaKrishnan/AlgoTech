@@ -1,4 +1,6 @@
-const baseUrl = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8080/api";
+const rawApiUrl = (import.meta.env.VITE_API_URL ?? import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8080/api").trim();
+const normalizedBase = rawApiUrl.endsWith("/") ? rawApiUrl.slice(0, -1) : rawApiUrl;
+const baseUrl = normalizedBase.endsWith("/api") ? normalizedBase : `${normalizedBase}/api`;
 
 type ErrorBody = { message?: string; fields?: Record<string, string> };
 
@@ -29,9 +31,11 @@ export const apiRequest = async <T>(path: string, options: RequestOptions = {}):
   if (body !== undefined) headers.set("Content-Type", "application/json");
   if (token) headers.set("Authorization", `Bearer ${token}`);
 
+  const targetPath = path.startsWith("/api/") ? path.slice(4) : path.startsWith("/") ? path : `/${path}`;
+
   let response: Response;
   try {
-    response = await fetch(`${baseUrl}${path}`, {
+    response = await fetch(`${baseUrl}${targetPath}`, {
       ...requestOptions,
       headers,
       body: body === undefined ? undefined : JSON.stringify(body),
