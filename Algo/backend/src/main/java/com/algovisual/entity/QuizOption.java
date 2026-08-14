@@ -1,33 +1,23 @@
 package com.algovisual.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "quiz_options")
+@Document(collection = "quiz_options")
 public class QuizOption {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "question_id", nullable = false)
+    @DBRef
     private QuizQuestion question;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
     private String text;
 
-    @Column(nullable = false)
     private boolean correct;
 
     public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
     public QuizQuestion getQuestion() { return question; }
     public void setQuestion(QuizQuestion question) { this.question = question; }
     public String getText() { return text; }

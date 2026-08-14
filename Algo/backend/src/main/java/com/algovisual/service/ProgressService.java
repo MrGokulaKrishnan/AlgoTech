@@ -35,6 +35,7 @@ public class ProgressService {
         UserProgress progress = progressRepository.findByUserIdAndAlgorithmId(userId, request.algorithmId())
                 .orElseGet(() -> {
                     UserProgress created = new UserProgress();
+                    created.setId(System.currentTimeMillis());
                     created.setUser(user);
                     created.setAlgorithmId(request.algorithmId());
                     return created;

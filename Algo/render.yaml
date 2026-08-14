@@ -1,4 +1,4 @@
-# Render Blueprint for automatic zero-configuration deployment
+# Render Blueprint for automatic zero-configuration deployment (MongoDB Edition)
 services:
   - type: web
     name: algovisual-api
@@ -7,11 +7,7 @@ services:
     dockerContext: .
     plan: free
     envVars:
-      - key: DB_URL
-        sync: false
-      - key: DB_USERNAME
-        sync: false
-      - key: DB_PASSWORD
+      - key: MONGODB_URI
         sync: false
       - key: JWT_SECRET
         sync: false

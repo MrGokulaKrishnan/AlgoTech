@@ -55,6 +55,7 @@ public class QuizService {
         User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("User not found"));
 
         QuizAttempt attempt = new QuizAttempt();
+        attempt.setId(System.currentTimeMillis());
         attempt.setUser(user);
         attempt.setQuestion(question);
         attempt.setSelectedOption(selected);

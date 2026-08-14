@@ -1,54 +1,30 @@
 package com.algovisual.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.Instant;
 
-@Entity
-@Table(name = "quiz_questions")
+@Document(collection = "quiz_questions")
 public class QuizQuestion {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "topic_id", nullable = false)
+    @DBRef
     private Topic topic;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 30)
     private QuizQuestionType type;
 
-    @Column(name = "question_text", nullable = false, columnDefinition = "TEXT")
     private String questionText;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
     private String explanation;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
+    private Instant createdAt = Instant.now();
 
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
-
-    @PrePersist
-    void beforeCreate() { createdAt = updatedAt = Instant.now(); }
-
-    @PreUpdate
-    void beforeUpdate() { updatedAt = Instant.now(); }
+    private Instant updatedAt = Instant.now();
 
     public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
     public Topic getTopic() { return topic; }
     public void setTopic(Topic topic) { this.topic = topic; }
     public QuizQuestionType getType() { return type; }
@@ -57,4 +33,8 @@ public class QuizQuestion {
     public void setQuestionText(String questionText) { this.questionText = questionText; }
     public String getExplanation() { return explanation; }
     public void setExplanation(String explanation) { this.explanation = explanation; }
+    public Instant getCreatedAt() { return createdAt; }
+    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
+    public Instant getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(Instant updatedAt) { this.updatedAt = updatedAt; }
 }

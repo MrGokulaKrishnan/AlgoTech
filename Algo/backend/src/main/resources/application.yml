@@ -1,24 +1,9 @@
 spring:
   application:
     name: algovisual-api
-  datasource:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/algovisual?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:Krish@1721}
-    hikari:
-      initialization-fail-timeout: -1
-      minimum-idle: 1
-      maximum-pool-size: 5
-      connection-timeout: 30000
-  jpa:
-    hibernate:
-      ddl-auto: ${DDL_AUTO:validate}
-    open-in-view: false
-    properties:
-      hibernate:
-        format_sql: true
-  flyway:
-    enabled: ${FLYWAY_ENABLED:true}
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/algovisual}
 
 server:
   port: ${SERVER_PORT:8080}

@@ -40,6 +40,7 @@ public class AuthService {
             throw new ConflictException("An account already exists for this email address.");
         }
         User user = new User();
+        user.setId(System.currentTimeMillis());
         user.setName(request.name().trim());
         user.setEmail(email);
         user.setPasswordHash(passwordEncoder.encode(request.password()));

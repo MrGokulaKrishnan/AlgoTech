@@ -51,6 +51,7 @@ public class AdminContentService {
     @Transactional
     public TopicResponse createTopic(TopicRequest request) {
         Topic topic = new Topic();
+        topic.setId(System.currentTimeMillis());
         apply(topic, request);
         return TopicResponse.from(topicRepository.save(topic));
     }
@@ -58,6 +59,7 @@ public class AdminContentService {
     @Transactional
     public AlgorithmResponse createAlgorithm(AlgorithmRequest request) {
         Algorithm algorithm = new Algorithm();
+        algorithm.setId(System.currentTimeMillis());
         apply(algorithm, request);
         return AlgorithmResponse.from(algorithmRepository.save(algorithm));
     }
@@ -75,6 +77,7 @@ public class AdminContentService {
         if (correctOptions != 1) throw new IllegalArgumentException("Exactly one quiz option must be marked correct");
         Topic topic = topicRepository.findById(request.topicId()).orElseThrow(() -> new NotFoundException("Topic not found"));
         QuizQuestion question = new QuizQuestion();
+        question.setId(System.currentTimeMillis());
         question.setTopic(topic);
         try {
             question.setType(QuizQuestionType.valueOf(request.type().trim().toUpperCase()));
@@ -86,6 +89,7 @@ public class AdminContentService {
         QuizQuestion saved = questionRepository.save(question);
         List<QuizOption> options = request.options().stream().map(input -> {
             QuizOption option = new QuizOption();
+            option.setId(System.currentTimeMillis() + (long)(Math.random() * 1000));
             option.setQuestion(saved);
             option.setText(input.text().trim());
             option.setCorrect(input.correct());
