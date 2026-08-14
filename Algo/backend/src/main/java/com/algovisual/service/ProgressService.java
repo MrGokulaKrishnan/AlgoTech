@@ -21,14 +21,12 @@ public class ProgressService {
         this.progressRepository = progressRepository;
     }
 
-    @Transactional(readOnly = true)
     public List<ProgressResponse> list(Long userId) {
         return progressRepository.findAllByUserIdOrderByUpdatedAtDesc(userId).stream()
                 .map(ProgressResponse::from)
                 .toList();
     }
 
-    @Transactional
     public ProgressResponse upsert(Long userId, ProgressRequest request) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User not found"));
@@ -44,7 +42,6 @@ public class ProgressService {
         return ProgressResponse.from(progressRepository.save(progress));
     }
 
-    @Transactional
     public ProgressResponse update(Long userId, Long id, ProgressRequest request) {
         UserProgress progress = progressRepository.findByIdAndUserId(id, userId)
                 .orElseThrow(() -> new NotFoundException("Progress record not found"));

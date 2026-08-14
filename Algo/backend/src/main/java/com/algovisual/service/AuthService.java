@@ -33,7 +33,6 @@ public class AuthService {
         this.jwtService = jwtService;
     }
 
-    @Transactional
     public AuthResponse register(RegisterRequest request) {
         String email = normalizedEmail(request.email());
         if (userRepository.existsByEmailIgnoreCase(email)) {

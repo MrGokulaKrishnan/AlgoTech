@@ -16,7 +16,6 @@ import com.algovisual.repository.TopicRepository;
 import com.algovisual.repository.UserRepository;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class QuizService {
@@ -36,7 +35,6 @@ public class QuizService {
         this.userRepository = userRepository;
     }
 
-    @Transactional(readOnly = true)
     public List<QuizQuestionResponse> questions(Long topicId) {
         if (!topicRepository.existsById(topicId)) throw new NotFoundException("Topic not found");
         return questionRepository.findAllByTopicIdOrderByIdAsc(topicId).stream()
@@ -46,7 +44,6 @@ public class QuizService {
                 .toList();
     }
 
-    @Transactional
     public QuizSubmissionResponse submit(Long userId, Long questionId, QuizSubmissionRequest request) {
         QuizQuestion question = questionRepository.findById(questionId)
                 .orElseThrow(() -> new NotFoundException("Quiz question not found"));

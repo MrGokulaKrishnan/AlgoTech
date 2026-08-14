@@ -23,7 +23,6 @@ import com.algovisual.repository.UserProgressRepository;
 import com.algovisual.repository.UserRepository;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AdminContentService {
@@ -48,7 +47,6 @@ public class AdminContentService {
         this.attemptRepository = attemptRepository;
     }
 
-    @Transactional
     public TopicResponse createTopic(TopicRequest request) {
         Topic topic = new Topic();
         topic.setId(System.currentTimeMillis());
@@ -56,7 +54,6 @@ public class AdminContentService {
         return TopicResponse.from(topicRepository.save(topic));
     }
 
-    @Transactional
     public AlgorithmResponse createAlgorithm(AlgorithmRequest request) {
         Algorithm algorithm = new Algorithm();
         algorithm.setId(System.currentTimeMillis());
@@ -64,14 +61,12 @@ public class AdminContentService {
         return AlgorithmResponse.from(algorithmRepository.save(algorithm));
     }
 
-    @Transactional
     public AlgorithmResponse updateAlgorithm(Long id, AlgorithmRequest request) {
         Algorithm algorithm = algorithmRepository.findById(id).orElseThrow(() -> new NotFoundException("Algorithm not found"));
         apply(algorithm, request);
         return AlgorithmResponse.from(algorithmRepository.save(algorithm));
     }
 
-    @Transactional
     public QuizQuestionResponse createQuestion(QuizQuestionRequest request) {
         long correctOptions = request.options().stream().filter(QuizOptionInput::correct).count();
         if (correctOptions != 1) throw new IllegalArgumentException("Exactly one quiz option must be marked correct");
@@ -100,7 +95,6 @@ public class AdminContentService {
                 .map(option -> new com.algovisual.dto.QuizOptionResponse(option.getId(), option.getText())).toList());
     }
 
-    @Transactional(readOnly = true)
     public UserStatsResponse stats() {
         return new UserStatsResponse(userRepository.count(), progressRepository.count(), attemptRepository.count());
     }
