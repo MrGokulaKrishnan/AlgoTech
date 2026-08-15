@@ -124,7 +124,7 @@ export const AlgorithmVisualizerPage = () => {
             <ArrowLeft size={16} /> Lesson Overview
           </Link>
           <div className="mt-3 flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-emerald-950/80 border border-emerald-900/60 px-3 py-1 text-xs font-bold text-emerald-400">
+            <span className="rounded-lg bg-emerald-950/80 border border-emerald-900/60 px-3 py-1 text-xs font-bold text-emerald-400">
               {algorithm.category}
             </span>
             <span className="text-xs font-mono font-semibold text-zinc-500">Interactive Visualizer</span>

@@ -35,7 +35,7 @@ export const RoadmapPage = () => (
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2">
                 <h2 className="text-lg font-bold text-white">{topic.title}</h2>
-                <span className="rounded-full border border-emerald-950 bg-emerald-950/40 px-2.5 py-0.5 text-xs font-semibold text-emerald-400">
+                <span className="rounded-lg border border-emerald-950 bg-emerald-950/40 px-2.5 py-0.5 text-xs font-semibold text-emerald-400">
                   {topic.difficulty}
                 </span>
               </div>

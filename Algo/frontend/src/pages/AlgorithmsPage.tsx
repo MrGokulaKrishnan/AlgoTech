@@ -68,7 +68,7 @@ export const AlgorithmsPage = () => {
             className="panel flex flex-col p-6 border-emerald-950/80 bg-black hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all"
           >
             <div className="flex items-center justify-between gap-3">
-              <span className="rounded-full bg-emerald-950/80 border border-emerald-900/60 px-3 py-1 text-xs font-bold text-emerald-300">
+              <span className="rounded-lg bg-emerald-950/80 border border-emerald-900/60 px-3 py-1 text-xs font-bold text-emerald-300">
                 {algorithm.category}
               </span>
               <span className="text-xs font-bold text-emerald-400">{algorithm.difficulty}</span>

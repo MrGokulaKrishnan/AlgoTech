@@ -37,8 +37,8 @@ export const ArrayVisualizer = ({ step, target }: ArrayVisualizerProps) => {
   return (
     <section aria-label="Array visualization" className="relative overflow-hidden rounded-2xl border border-emerald-950/80 bg-black p-5 sm:p-8 shadow-[0_0_40px_rgba(0,0,0,0.9)]">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm">
-        <span className="rounded-full border border-emerald-950 bg-emerald-950/30 px-3.5 py-1.5 text-xs font-semibold text-emerald-400">Array Visualizer</span>
-        {target !== undefined && <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 font-bold text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.2)]">Target = {target}</span>}
+        <span className="rounded-lg border border-emerald-950 bg-emerald-950/30 px-3.5 py-1.5 text-xs font-semibold text-emerald-400">Array Visualizer</span>
+        {target !== undefined && <span className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 font-bold text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.2)]">Target = {target}</span>}
       </div>
       <div className="flex min-h-56 min-w-max items-center justify-center gap-2 pb-10 pt-4 sm:gap-3">
         {step.data.values.map((value, index) => (
@@ -68,9 +68,9 @@ export const ArrayVisualizer = ({ step, target }: ArrayVisualizerProps) => {
       </div>
       {step.data.values.length === 0 && <p className="py-16 text-center text-zinc-500">This array is empty.</p>}
       <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-zinc-400" aria-label="Visualization legend">
-        <span className="flex items-center gap-1.5"><i className="h-2.5 w-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.5)]" />Comparing</span>
-        <span className="flex items-center gap-1.5"><i className="h-2.5 w-2.5 rounded-full bg-rose-400 shadow-[0_0_8px_rgba(244,63,94,0.5)]" />Swapping / Moving</span>
-        <span className="flex items-center gap-1.5"><i className="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.6)]" />Final / Found</span>
+        <span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-sm bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.5)]" />Comparing</span>
+        <span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-sm bg-rose-400 shadow-[0_0_8px_rgba(244,63,94,0.5)]" />Swapping / Moving</span>
+        <span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-sm bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.6)]" />Final / Found</span>
       </div>
     </section>
   );

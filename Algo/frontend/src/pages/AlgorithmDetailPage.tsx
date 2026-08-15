@@ -17,10 +17,10 @@ export const AlgorithmDetailPage = () => {
       <div className="mt-7 grid gap-10 lg:grid-cols-[minmax(0,1fr)_24rem]">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-emerald-950/80 border border-emerald-900/60 px-3 py-1 text-xs font-bold text-emerald-400">
+            <span className="rounded-lg bg-emerald-950/80 border border-emerald-900/60 px-3 py-1 text-xs font-bold text-emerald-400">
               {algorithm.category}
             </span>
-            <span className="rounded-full border border-emerald-950 bg-black px-3 py-1 text-xs font-bold text-zinc-300">
+            <span className="rounded-lg border border-emerald-950 bg-black px-3 py-1 text-xs font-bold text-zinc-300">
               {algorithm.difficulty}
             </span>
           </div>

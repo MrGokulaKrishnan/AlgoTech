@@ -118,7 +118,7 @@ export const QuizPage = () => {
         ) : question ? (
           <div className="mt-8">
             <div className="flex items-center justify-between text-xs">
-              <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-bold text-emerald-400">
+              <span className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-bold text-emerald-400">
                 {selectedTopic?.name ?? "Quiz"}
               </span>
               <span className="font-mono font-bold text-zinc-400">

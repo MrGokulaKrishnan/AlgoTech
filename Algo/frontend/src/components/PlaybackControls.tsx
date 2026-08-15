@@ -25,7 +25,7 @@ export const PlaybackControls = ({
           <SkipBack size={18} />
         </button>
         <button type="button" className="button-primary min-w-28 !rounded-xl !px-4 !py-2.5" onClick={onTogglePlay} disabled={totalSteps < 2}>
-          {isPlaying ? <Pause size={18} /> : <Play size={18} fill="currentColor" />} {isPlaying ? "Pause" : isAtEnd ? "Replay" : "Play"}
+          {isPlaying ? <Pause size={18} /> : <Play size={18} />} {isPlaying ? "Pause" : isAtEnd ? "Replay" : "Play"}
         </button>
         <button type="button" className="button-secondary !rounded-xl !p-2.5" onClick={onNext} disabled={isAtEnd} aria-label="Next step">
           <SkipForward size={18} />
