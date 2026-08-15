@@ -3,7 +3,7 @@ spring:
     name: algovisual-api
   data:
     mongodb:
-      uri: ${MONGODB_URI:mongodb://localhost:27017/algovisual}
+      uri: ${MONGODB_URI:mongodb://localhost:27017/algovisual?authSource=admin}
 
 server:
   port: ${SERVER_PORT:8080}
