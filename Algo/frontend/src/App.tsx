@@ -25,6 +25,9 @@ const App = () => (
       <Route path="/practice" element={<PlaceholderPage title="Practice problems are next." description="The frontend MVP focuses on the reusable learning visualizers first. Practice sets will build on those lessons." />} />
       <Route path="/login" element={<AuthPage mode="login" />} />
       <Route path="/register" element={<AuthPage mode="register" />} />
+      <Route path="/auth" element={<AuthPage mode="login" />} />
+      <Route path="/auth/login" element={<AuthPage mode="login" />} />
+      <Route path="/auth/register" element={<AuthPage mode="register" />} />
       <Route element={<ProtectedRoute />}>
         <Route path="/progress" element={<DashboardPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
