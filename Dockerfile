@@ -1,9 +1,9 @@
-# Root Dockerfile for Render deployment (handling Algo/ folder wrapper)
+# Multi-stage Docker build for AlgoVisual Spring Boot Backend (Java 17)
 FROM maven:3.9.6-eclipse-temurin-17-alpine AS build
 WORKDIR /app
-COPY Algo/backend/pom.xml .
+COPY backend/pom.xml .
 RUN mvn -q -DskipTests dependency:go-offline
-COPY Algo/backend/src ./src
+COPY backend/src ./src
 RUN mvn -q -DskipTests package
 
 FROM eclipse-temurin:17-jre-alpine
