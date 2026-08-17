@@ -35,12 +35,12 @@ export const ArrayVisualizer = ({ step, target }: ArrayVisualizerProps) => {
   }, {});
 
   return (
-    <section aria-label="Array visualization" className="relative overflow-hidden rounded-2xl border border-emerald-950/80 bg-black p-5 sm:p-8 shadow-[0_0_40px_rgba(0,0,0,0.9)]">
+    <section aria-label="Array visualization" className="relative overflow-hidden rounded-2xl border border-emerald-950/80 bg-black p-6 sm:p-10 shadow-[0_0_40px_rgba(0,0,0,0.9)]">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm">
-        <span className="rounded-lg border border-emerald-950 bg-emerald-950/30 px-3.5 py-1.5 text-xs font-semibold text-emerald-400">Array Visualizer</span>
-        {target !== undefined && <span className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 font-bold text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.2)]">Target = {target}</span>}
+        <span className="rounded-lg border border-emerald-950 bg-emerald-950/30 px-4 py-2 text-sm font-semibold text-emerald-400">Array Visualizer</span>
+        {target !== undefined && <span className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 font-bold text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.2)]">Target = {target}</span>}
       </div>
-      <div className="flex min-h-56 min-w-max items-center justify-center gap-2 pb-10 pt-4 sm:gap-3">
+      <div className="flex min-h-64 min-w-max items-center justify-center gap-3 pb-10 pt-4 sm:gap-4">
         {step.data.values.map((value, index) => (
           <div className="relative flex flex-col items-center" key={`${value}-${index}`}>
             <motion.div
@@ -48,14 +48,14 @@ export const ArrayVisualizer = ({ step, target }: ArrayVisualizerProps) => {
               initial={false}
               animate={reducedMotion ? undefined : { y: step.swappedIndices?.includes(index) ? [0, -12, 0] : 0, scale: step.highlightedIndices?.includes(index) ? 1.06 : 1 }}
               transition={{ type: "spring", stiffness: 380, damping: 24 }}
-              className={`flex h-14 w-14 items-center justify-center rounded-xl border-2 text-lg font-bold tabular-nums transition-all sm:h-16 sm:w-16 sm:text-xl ${cellStyle(step, index)}`}
+              className={`flex h-16 w-16 items-center justify-center rounded-xl border-2 text-xl font-bold tabular-nums transition-all sm:h-20 sm:w-20 sm:text-2xl ${cellStyle(step, index)}`}
               aria-label={`Index ${index}, value ${value}`}
             >
               {value}
             </motion.div>
             <span className="mt-2.5 text-xs font-mono font-medium text-zinc-500">{index}</span>
             {pointersByIndex[index] && (
-              <div className="absolute top-[5.65rem] flex flex-wrap justify-center gap-1 sm:top-[6.2rem]">
+              <div className="absolute top-[6rem] flex flex-wrap justify-center gap-1 sm:top-[6.8rem]">
                 {pointersByIndex[index].map((name) => (
                   <span key={name} className="rounded-md border border-emerald-500/40 bg-black px-1.5 py-0.5 text-[10px] font-black tracking-wider text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.3)]">
                     ↑ {name}
@@ -67,12 +67,11 @@ export const ArrayVisualizer = ({ step, target }: ArrayVisualizerProps) => {
         ))}
       </div>
       {step.data.values.length === 0 && <p className="py-16 text-center text-zinc-500">This array is empty.</p>}
-      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-zinc-400" aria-label="Visualization legend">
-        <span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-sm bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.5)]" />Comparing</span>
-        <span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-sm bg-rose-400 shadow-[0_0_8px_rgba(244,63,94,0.5)]" />Swapping / Moving</span>
-        <span className="flex items-center gap-1.5"><i className="h-2 w-2 rounded-sm bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.6)]" />Final / Found</span>
+      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-zinc-400" aria-label="Visualization legend">
+        <span className="flex items-center gap-1.5"><i className="h-2.5 w-2.5 rounded-sm bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.5)]" />Comparing</span>
+        <span className="flex items-center gap-1.5"><i className="h-2.5 w-2.5 rounded-sm bg-rose-400 shadow-[0_0_8px_rgba(244,63,94,0.5)]" />Swapping / Moving</span>
+        <span className="flex items-center gap-1.5"><i className="h-2.5 w-2.5 rounded-sm bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.6)]" />Final / Found</span>
       </div>
     </section>
   );
 };
-

@@ -49,24 +49,24 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
   };
 
   return (
-    <section className="relative grid min-h-[calc(100vh-8rem)] place-items-center overflow-hidden px-4 py-12 bg-black">
+    <section className="relative grid min-h-[calc(100vh-8rem)] place-items-center overflow-hidden px-4 py-16 sm:py-24 bg-black">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.15),transparent_55%)]" />
-      <div className="panel w-full max-w-md p-6 sm:p-8 border-emerald-900/40 bg-black/90 shadow-[0_0_50px_rgba(16,185,129,0.08)]">
+      <div className="panel w-full max-w-lg p-8 sm:p-12 border-emerald-900/40 bg-black/90 shadow-[0_0_50px_rgba(16,185,129,0.08)]">
         <Link to="/" className="flex items-center gap-2">
           <Logo size="md" />
         </Link>
-        <p className="eyebrow mt-8">Your learning space</p>
-        <h1 className="mt-3 text-3xl font-black tracking-tight text-white">
+        <p className="eyebrow mt-10">Your learning space</p>
+        <h1 className="mt-4 text-4xl font-black tracking-tight text-white">
           {isRegister ? "Start learning with a plan." : "Welcome back."}
         </h1>
-        <p className="mt-3 leading-7 text-zinc-400 text-sm">
+        <p className="mt-4 leading-7 text-zinc-400 text-base">
           {isRegister
             ? "Create a free account to save your completed algorithms and continue where you left off."
             : "Sign in to see your saved learning progress."}
         </p>
-        <form className="mt-7 grid gap-4" onSubmit={submit}>
+        <form className="mt-9 grid gap-5" onSubmit={submit}>
           {isRegister && (
-            <label className="grid gap-1.5 text-sm font-medium text-zinc-200">
+            <label className="grid gap-1.5 text-base font-medium text-zinc-200">
               Name
               <input
                 required
@@ -74,11 +74,11 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 autoComplete="name"
-                className="rounded-xl border border-emerald-950 bg-black px-3.5 py-2.5 text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </label>
           )}
-          <label className="grid gap-1.5 text-sm font-medium text-zinc-200">
+          <label className="grid gap-1.5 text-base font-medium text-zinc-200">
             Email
             <input
               required
@@ -86,10 +86,10 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               autoComplete="email"
-              className="rounded-xl border border-emerald-950 bg-black px-3.5 py-2.5 text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </label>
-          <label className="grid gap-1.5 text-sm font-medium text-zinc-200">
+          <label className="grid gap-1.5 text-base font-medium text-zinc-200">
             Password
             <input
               required
@@ -99,11 +99,11 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               autoComplete={isRegister ? "new-password" : "current-password"}
-              className="rounded-xl border border-emerald-950 bg-black px-3.5 py-2.5 text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </label>
           {isRegister && (
-            <label className="grid gap-1.5 text-sm font-medium text-zinc-200">
+            <label className="grid gap-1.5 text-base font-medium text-zinc-200">
               Confirm password
               <input
                 required
@@ -113,7 +113,7 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
                 value={confirmPassword}
                 onChange={(event) => setConfirmPassword(event.target.value)}
                 autoComplete="new-password"
-                className="rounded-xl border border-emerald-950 bg-black px-3.5 py-2.5 text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </label>
           )}
@@ -122,12 +122,12 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
               {error}
             </p>
           )}
-          <button type="submit" disabled={isSubmitting} className="button-primary mt-2 w-full">
+          <button type="submit" disabled={isSubmitting} className="button-primary mt-3 w-full">
             {isRegister ? <UserPlus size={18} /> : <LogIn size={18} />}
             {isSubmitting ? "Please wait…" : isRegister ? "Create account" : "Log in"}
           </button>
         </form>
-        <p className="mt-6 text-center text-sm text-zinc-400">
+        <p className="mt-8 text-center text-base text-zinc-400">
           {isRegister ? "Already have an account?" : "New to AlgoVisual?"}{" "}
           <Link
             to={isRegister ? "/login" : "/register"}

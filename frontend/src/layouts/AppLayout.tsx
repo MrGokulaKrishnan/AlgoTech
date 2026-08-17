@@ -19,17 +19,17 @@ export const AppLayout = () => {
   return (
     <div className="min-h-screen bg-black text-ink">
       <header className="sticky top-0 z-30 border-b border-emerald-950/80 bg-black/90 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-2" onClick={closeMenu}>
             <Logo size="md" />
           </Link>
-          <nav className="hidden items-center gap-1.5 md:flex" aria-label="Primary navigation">
+          <nav className="hidden items-center gap-2 md:flex" aria-label="Primary navigation">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `rounded-xl px-3.5 py-2 text-sm font-semibold transition-all ${
+                  `rounded-xl px-4 py-2.5 text-[15px] font-semibold transition-all ${
                     isActive
                       ? "bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 shadow-[0_0_12px_rgba(16,185,129,0.2)]"
                       : "text-zinc-400 hover:bg-emerald-950/30 hover:text-zinc-100"
@@ -70,7 +70,7 @@ export const AppLayout = () => {
                 <Link to="/login" className="text-sm font-semibold text-zinc-300 hover:text-emerald-400">
                   Log in
                 </Link>
-                <Link to="/register" className="button-primary !px-3.5 !py-2 text-sm">
+                <Link to="/register" className="button-primary !px-5 !py-2.5 text-[15px]">
                   Create account
                 </Link>
               </>
@@ -87,14 +87,14 @@ export const AppLayout = () => {
           </button>
         </div>
         {mobileOpen && (
-          <nav className="border-t border-emerald-950 bg-black px-4 py-3 md:hidden" aria-label="Mobile navigation">
+          <nav className="border-t border-emerald-950 bg-black px-5 py-4 md:hidden" aria-label="Mobile navigation">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 onClick={closeMenu}
                 className={({ isActive }) =>
-                  `block rounded-lg px-3 py-2.5 text-sm font-medium ${
+                  `block rounded-lg px-3 py-3.5 text-base font-medium ${
                     isActive ? "bg-emerald-950/80 text-emerald-400 border border-emerald-800/40" : "text-zinc-300"
                   }`
                 }
@@ -108,7 +108,7 @@ export const AppLayout = () => {
                   <Link
                     onClick={closeMenu}
                     to="/admin"
-                    className="mt-2 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-semibold text-emerald-300"
+                    className="mt-2 flex items-center gap-2 rounded-lg px-3 py-3.5 text-base font-semibold text-emerald-300"
                   >
                     <ShieldCheck size={16} /> Admin
                   </Link>
@@ -116,7 +116,7 @@ export const AppLayout = () => {
                 <Link
                   onClick={closeMenu}
                   to="/dashboard"
-                  className="mt-2 flex items-center gap-2 rounded-lg border border-emerald-950 px-3 py-2.5 text-sm font-semibold text-zinc-200"
+                  className="mt-2 flex items-center gap-2 rounded-lg border border-emerald-950 px-3 py-3.5 text-base font-semibold text-zinc-200"
                 >
                   <LayoutDashboard size={16} /> Dashboard
                 </Link>
@@ -126,7 +126,7 @@ export const AppLayout = () => {
                     logout();
                     closeMenu();
                   }}
-                  className="mt-2 flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm font-semibold text-zinc-400 hover:text-rose-400"
+                  className="mt-2 flex w-full items-center gap-2 rounded-lg px-3 py-3.5 text-left text-base font-semibold text-zinc-400 hover:text-rose-400"
                 >
                   <LogOut size={16} /> Log out
                 </button>
@@ -135,7 +135,7 @@ export const AppLayout = () => {
               <Link
                 onClick={closeMenu}
                 to="/login"
-                className="mt-2 block rounded-lg border border-emerald-950 px-3 py-2.5 text-sm font-semibold text-zinc-200"
+                className="mt-2 block rounded-lg border border-emerald-950 px-3 py-3.5 text-base font-semibold text-zinc-200"
               >
                 Log in
               </Link>
@@ -145,7 +145,7 @@ export const AppLayout = () => {
       </header>
       <main><Outlet /></main>
       <footer className="border-t border-emerald-950/80 bg-black">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-screen-2xl flex-col gap-4 px-4 py-12 text-base text-zinc-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
             <Logo size="sm" showText={false} />
             <span>© 2026 AlgoVisual. AMOLED Dark Emerald Edition.</span>

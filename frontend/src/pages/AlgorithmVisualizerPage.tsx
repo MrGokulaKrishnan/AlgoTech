@@ -117,28 +117,28 @@ export const AlgorithmVisualizerPage = () => {
   };
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 bg-black">
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+    <section className="mx-auto max-w-screen-2xl page-padding py-12 sm:py-16 bg-black">
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-5">
         <div>
-          <Link to={`/algorithms/${id}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-400 hover:text-emerald-400 transition-colors">
+          <Link to={`/algorithms/${id}`} className="inline-flex items-center gap-1.5 text-sm font-bold text-zinc-400 hover:text-emerald-400 transition-colors">
             <ArrowLeft size={16} /> Lesson Overview
           </Link>
           <div className="mt-3 flex flex-wrap items-center gap-2">
-            <span className="rounded-lg bg-emerald-950/80 border border-emerald-900/60 px-3 py-1 text-xs font-bold text-emerald-400">
+            <span className="rounded-lg bg-emerald-950/80 border border-emerald-900/60 px-3 py-1 text-sm font-bold text-emerald-400">
               {algorithm.category}
             </span>
-            <span className="text-xs font-mono font-semibold text-zinc-500">Interactive Visualizer</span>
+            <span className="text-sm font-mono font-semibold text-zinc-500">Interactive Visualizer</span>
           </div>
-          <h1 className="mt-2 text-3xl font-black tracking-tight text-white sm:text-4xl">{algorithm.name}</h1>
+          <h1 className="mt-2 text-4xl font-black tracking-tight text-white sm:text-5xl">{algorithm.name}</h1>
         </div>
-        <div className="hidden rounded-xl border border-emerald-500/30 bg-emerald-950/40 px-4 py-3 text-xs font-semibold text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.15)] lg:block">
+        <div className="hidden rounded-xl border border-emerald-500/30 bg-emerald-950/40 px-4 py-3 text-sm font-semibold text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.15)] lg:block">
           <CheckCircle2 className="mr-2 inline text-emerald-400" size={17} />
           Keyboard controls: <span className="font-mono text-white">Space</span> (Play) | <span className="font-mono text-white">← / →</span> (Step) | <span className="font-mono text-white">R</span> (Reset)
         </div>
       </div>
 
-      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_22rem]">
-        <div className="min-w-0 space-y-5">
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_24rem]">
+        <div className="min-w-0 space-y-6">
           <InputControls
             metadata={algorithm}
             values={valuesText}
@@ -149,7 +149,7 @@ export const AlgorithmVisualizerPage = () => {
             onVisualize={runVisualization}
             onRestoreExample={restoreExample}
           />
-          <div className="panel overflow-x-auto p-2 sm:p-3 border-emerald-950/80 bg-black">
+          <div className="panel overflow-x-auto p-3 sm:p-4 border-emerald-950/80 bg-black">
             <ArrayVisualizer step={controller.currentStep} target={runInput.target} />
           </div>
           <PlaybackControls
@@ -182,7 +182,7 @@ export const AlgorithmVisualizerPage = () => {
             </p>
           )}
         </div>
-        <aside className="space-y-5">
+        <aside className="space-y-6">
           <ExplanationPanel step={controller.currentStep} />
           <CodePanel lines={algorithm.code} activeLine={controller.currentStep?.codeLine} />
           <ComplexityPanel complexity={algorithm.complexity} />

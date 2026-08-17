@@ -2,18 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 :root {
   color: #f9fafb;
   background: #000000;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * { box-sizing: border-box; }
 html { min-width: 320px; scroll-behavior: smooth; background-color: #000000; }
-body { margin: 0; min-width: 320px; min-height: 100vh; background: #000000; color: #f9fafb; }
-button, input, select { font: inherit; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: #000000; color: #f9fafb; line-height: 1.6; }
+button, input, select, textarea { font: inherit; }
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
   outline: 2px solid #10b981;
   outline-offset: 3px;
@@ -41,17 +45,28 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
     @apply rounded-2xl border border-line bg-surface/90 shadow-emerald-card backdrop-blur-md transition-all duration-200 hover:border-emerald-900/60; 
   }
   .button-primary { 
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-2.5 font-bold text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50; 
+    @apply inline-flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-7 py-3.5 text-base font-bold text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50; 
   }
   .button-secondary { 
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-950/80 bg-emerald-950/40 px-4 py-2.5 font-semibold text-emerald-200 transition-all hover:border-emerald-700/60 hover:bg-emerald-900/30 hover:text-white hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50; 
+    @apply inline-flex items-center justify-center gap-2.5 rounded-xl border border-emerald-950/80 bg-emerald-950/40 px-7 py-3.5 text-base font-semibold text-emerald-200 transition-all hover:border-emerald-700/60 hover:bg-emerald-900/30 hover:text-white hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50; 
+  }
+  .button-primary-sm {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-5 py-2.5 text-sm font-bold text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50; 
+  }
+  .button-secondary-sm {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-950/80 bg-emerald-950/40 px-5 py-2.5 text-sm font-semibold text-emerald-200 transition-all hover:border-emerald-700/60 hover:bg-emerald-900/30 hover:text-white hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50; 
   }
   .eyebrow { 
-    @apply text-xs font-extrabold uppercase tracking-[0.2em] text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.4)]; 
+    @apply text-sm font-extrabold uppercase tracking-[0.2em] text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.4)]; 
+  }
+  .section-gap {
+    @apply py-20 sm:py-28;
+  }
+  .page-padding {
+    @apply px-5 sm:px-8 lg:px-10;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
-

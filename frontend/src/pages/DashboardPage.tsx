@@ -35,55 +35,55 @@ export const DashboardPage = () => {
   const progressByAlgorithm = new Map(progress.map((record) => [record.algorithmId, record]));
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 bg-black">
+    <section className="mx-auto max-w-screen-2xl page-padding py-16 sm:py-24 bg-black">
       <p className="eyebrow">Your Learning Dashboard</p>
-      <h1 className="mt-3 text-4xl font-black tracking-tight text-white">Welcome back, {user?.name ?? "learner"}.</h1>
-      <p className="mt-3 text-lg text-zinc-400">Your visualizer milestones appear here as you complete them.</p>
+      <h1 className="mt-4 text-5xl font-black tracking-tight text-white">Welcome back, {user?.name ?? "learner"}.</h1>
+      <p className="mt-4 text-xl text-zinc-400">Your visualizer milestones appear here as you complete them.</p>
 
       {/* Stats Cards */}
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <article className="panel p-6 border-emerald-950/80 bg-black">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-            <Target size={22} />
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <article className="panel p-8 border-emerald-950/80 bg-black">
+          <span className="grid h-12 w-12 place-items-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            <Target size={24} />
           </span>
-          <p className="mt-5 text-xs font-semibold text-zinc-400">Overall Progress</p>
-          <p className="mt-1 text-3xl font-black text-emerald-400 drop-shadow-[0_0_10px_rgba(16,185,129,0.3)]">{overall}%</p>
+          <p className="mt-6 text-sm font-semibold text-zinc-400">Overall Progress</p>
+          <p className="mt-1 text-4xl font-black text-emerald-400 drop-shadow-[0_0_10px_rgba(16,185,129,0.3)]">{overall}%</p>
         </article>
 
-        <article className="panel p-6 border-emerald-950/80 bg-black">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20">
-            <BookOpenCheck size={22} />
+        <article className="panel p-8 border-emerald-950/80 bg-black">
+          <span className="grid h-12 w-12 place-items-center rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20">
+            <BookOpenCheck size={24} />
           </span>
-          <p className="mt-5 text-xs font-semibold text-zinc-400">Algorithms Completed</p>
-          <p className="mt-1 text-3xl font-black text-white">
+          <p className="mt-6 text-sm font-semibold text-zinc-400">Algorithms Completed</p>
+          <p className="mt-1 text-4xl font-black text-white">
             {completed} <span className="text-sm font-normal text-zinc-500">/ {algorithmMetadata.length}</span>
           </p>
         </article>
 
-        <article className="panel p-6 border-emerald-950/80 bg-black">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
-            <GraduationCap size={22} />
+        <article className="panel p-8 border-emerald-950/80 bg-black">
+          <span className="grid h-12 w-12 place-items-center rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            <GraduationCap size={24} />
           </span>
-          <p className="mt-5 text-xs font-semibold text-zinc-400">Topic Quizzes</p>
+          <p className="mt-6 text-sm font-semibold text-zinc-400">Topic Quizzes</p>
           <Link to="/quiz" className="mt-2.5 inline-block text-sm font-bold text-emerald-400 hover:text-emerald-300">
             Take a Quiz →
           </Link>
         </article>
 
-        <article className="panel p-6 border-emerald-950/80 bg-black">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
-            <Flame size={22} />
+        <article className="panel p-8 border-emerald-950/80 bg-black">
+          <span className="grid h-12 w-12 place-items-center rounded-xl bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+            <Flame size={24} />
           </span>
-          <p className="mt-5 text-xs font-semibold text-zinc-400">Active Streak</p>
-          <p className="mt-1 text-3xl font-black text-zinc-600">—</p>
+          <p className="mt-6 text-sm font-semibold text-zinc-400">Active Streak</p>
+          <p className="mt-1 text-4xl font-black text-zinc-600">—</p>
         </article>
       </div>
 
       {/* Progress Table */}
-      <section className="panel mt-8 p-6 sm:p-7 border-emerald-950/80 bg-black">
+      <section className="panel mt-10 p-8 sm:p-10 border-emerald-950/80 bg-black">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h2 className="text-xl font-bold text-white">Algorithm Progress</h2>
+            <h2 className="text-2xl font-bold text-white">Algorithm Progress</h2>
             <p className="mt-1 text-xs text-zinc-400">Finish a visualizer run to mark the lesson complete.</p>
           </div>
           <Link to="/learn" className="button-primary">
@@ -103,7 +103,7 @@ export const DashboardPage = () => {
               const record = progressByAlgorithm.get(algorithm.id);
               const percentage = record?.progressPercentage ?? 0;
               return (
-                <div key={algorithm.id} className="flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:gap-6">
+                <div key={algorithm.id} className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:gap-6">
                   <div className="min-w-48">
                     <p className="font-bold text-white">{algorithm.name}</p>
                     <p className="text-xs text-zinc-500">{algorithm.category}</p>
