@@ -1,3 +1,4 @@
+import { FadeIn, StaggerContainer, StaggerItem } from "../components/Animations";
 import { BookOpenCheck, Flame, GraduationCap, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -36,21 +37,26 @@ export const DashboardPage = () => {
 
   return (
     <section className="mx-auto max-w-screen-2xl page-padding py-16 sm:py-24 bg-black">
-      <p className="eyebrow">Your Learning Dashboard</p>
-      <h1 className="mt-4 text-5xl font-black tracking-tight text-white">Welcome back, {user?.name ?? "learner"}.</h1>
-      <p className="mt-4 text-xl text-zinc-400">Your visualizer milestones appear here as you complete them.</p>
+      <FadeIn>
+        <p className="eyebrow">Your Learning Dashboard</p>
+        <h1 className="mt-4 text-5xl font-black tracking-tight text-white">Welcome back, {user?.name ?? "learner"}.</h1>
+        <p className="mt-4 text-xl text-zinc-400">Your visualizer milestones appear here as you complete them.</p>
+      </FadeIn>
 
       {/* Stats Cards */}
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-        <article className="panel p-8 border-emerald-950/80 bg-black">
+      <StaggerContainer className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <StaggerItem>
+          <article className="panel p-8 border-emerald-950/80 bg-black hover:scale-[1.02] transition-all duration-300">
           <span className="grid h-12 w-12 place-items-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
             <Target size={24} />
           </span>
           <p className="mt-6 text-sm font-semibold text-zinc-400">Overall Progress</p>
           <p className="mt-1 text-4xl font-black text-emerald-400 drop-shadow-[0_0_10px_rgba(16,185,129,0.3)]">{overall}%</p>
         </article>
+        </StaggerItem>
 
-        <article className="panel p-8 border-emerald-950/80 bg-black">
+        <StaggerItem>
+          <article className="panel p-8 border-emerald-950/80 bg-black hover:scale-[1.02] transition-all duration-300">
           <span className="grid h-12 w-12 place-items-center rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20">
             <BookOpenCheck size={24} />
           </span>
@@ -59,8 +65,10 @@ export const DashboardPage = () => {
             {completed} <span className="text-sm font-normal text-zinc-500">/ {algorithmMetadata.length}</span>
           </p>
         </article>
+        </StaggerItem>
 
-        <article className="panel p-8 border-emerald-950/80 bg-black">
+        <StaggerItem>
+          <article className="panel p-8 border-emerald-950/80 bg-black hover:scale-[1.02] transition-all duration-300">
           <span className="grid h-12 w-12 place-items-center rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
             <GraduationCap size={24} />
           </span>
@@ -69,18 +77,22 @@ export const DashboardPage = () => {
             Take a Quiz →
           </Link>
         </article>
+        </StaggerItem>
 
-        <article className="panel p-8 border-emerald-950/80 bg-black">
+        <StaggerItem>
+          <article className="panel p-8 border-emerald-950/80 bg-black hover:scale-[1.02] transition-all duration-300">
           <span className="grid h-12 w-12 place-items-center rounded-xl bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
             <Flame size={24} />
           </span>
           <p className="mt-6 text-sm font-semibold text-zinc-400">Active Streak</p>
           <p className="mt-1 text-4xl font-black text-zinc-600">—</p>
         </article>
-      </div>
+        </StaggerItem>
+      </StaggerContainer>
 
       {/* Progress Table */}
-      <section className="panel mt-10 p-8 sm:p-10 border-emerald-950/80 bg-black">
+      <FadeIn delay={0.2}>
+        <section className="panel mt-10 p-8 sm:p-10 border-emerald-950/80 bg-black">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold text-white">Algorithm Progress</h2>
@@ -129,6 +141,7 @@ export const DashboardPage = () => {
           </div>
         )}
       </section>
+      </FadeIn>
     </section>
   );
 };

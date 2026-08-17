@@ -42,7 +42,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 @layer components {
   .panel { 
-    @apply rounded-2xl border border-line bg-surface/90 shadow-emerald-card backdrop-blur-md transition-all duration-200 hover:border-emerald-900/60; 
+    @apply rounded-2xl border border-line bg-surface/90 shadow-emerald-card backdrop-blur-md transition-all duration-300 ease-out hover:border-emerald-900/60; 
   }
   .button-primary { 
     @apply inline-flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-7 py-3.5 text-base font-bold text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-400 hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50; 

@@ -1,3 +1,4 @@
+import { FadeIn } from "../components/Animations";
 import { BarChart3, BookPlus, CirclePlus, ClipboardPlus, Save } from "lucide-react";
 import { FormEvent, useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
@@ -100,13 +101,15 @@ export const AdminPage = () => {
   };
 
   const updateOption = (index: number, patch: Partial<QuizQuestionInput["options"][number]>) => setQuestionForm((form) => ({ ...form, options: form.options.map((option, optionIndex) => optionIndex === index ? { ...option, ...patch } : patch.correct ? { ...option, correct: false } : option) }));
-  const fieldClass = "rounded-xl border border-emerald-950 bg-black px-3.5 py-2.5 text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none";
+  const fieldClass = "rounded-xl border border-emerald-950 bg-black px-3.5 py-2.5 text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none transition-all duration-300";
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 bg-black">
-      <p className="eyebrow">Content Management</p>
-      <h1 className="mt-3 text-4xl font-black text-white">Admin Dashboard</h1>
-      <p className="mt-2 text-zinc-400">Add learning content, edit algorithm details, and create quiz questions.</p>
+      <FadeIn>
+        <p className="eyebrow">Content Management</p>
+        <h1 className="mt-3 text-4xl font-black text-white">Admin Dashboard</h1>
+        <p className="mt-2 text-zinc-400">Add learning content, edit algorithm details, and create quiz questions.</p>
+      </FadeIn>
 
       {isLoading ? (
         <p className="mt-8 text-zinc-500">Loading dashboard…</p>
@@ -159,7 +162,8 @@ export const AdminPage = () => {
           )}
 
           {panel === "topic" && (
-            <form onSubmit={saveTopic} className="panel mt-5 grid gap-4 p-6 sm:grid-cols-2 border-emerald-950/80 bg-black">
+            <FadeIn delay={0.1}>
+              <form onSubmit={saveTopic} className="panel mt-5 grid gap-4 p-6 sm:grid-cols-2 border-emerald-950/80 bg-black">
               <h2 className="sm:col-span-2 text-xl font-bold text-white">Add a Topic</h2>
               <label className="grid gap-1.5 text-xs font-semibold text-zinc-300">
                 Name
@@ -223,10 +227,12 @@ export const AdminPage = () => {
                 {isSaving ? "Saving…" : "Create Topic"}
               </button>
             </form>
+            </FadeIn>
           )}
 
           {panel === "algorithm" && (
-            <form onSubmit={saveAlgorithm} className="panel mt-5 grid gap-4 p-6 sm:grid-cols-2 border-emerald-950/80 bg-black">
+            <FadeIn delay={0.1}>
+              <form onSubmit={saveAlgorithm} className="panel mt-5 grid gap-4 p-6 sm:grid-cols-2 border-emerald-950/80 bg-black">
               <div className="sm:col-span-2 flex flex-wrap items-center justify-between gap-3">
                 <h2 className="text-xl font-bold text-white">{editingAlgorithmId ? "Edit Algorithm" : "Add an Algorithm"}</h2>
                 <select
@@ -366,10 +372,12 @@ export const AdminPage = () => {
                 {isSaving ? "Saving…" : editingAlgorithmId ? "Save Changes" : "Create Algorithm"}
               </button>
             </form>
+            </FadeIn>
           )}
 
           {panel === "quiz" && (
-            <form onSubmit={saveQuestion} className="panel mt-5 grid gap-4 p-6 border-emerald-950/80 bg-black">
+            <FadeIn delay={0.1}>
+              <form onSubmit={saveQuestion} className="panel mt-5 grid gap-4 p-6 border-emerald-950/80 bg-black">
               <h2 className="text-xl font-bold text-white">Add a Quiz Question</h2>
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="grid gap-1.5 text-xs font-semibold text-zinc-300">
@@ -445,6 +453,7 @@ export const AdminPage = () => {
                 {isSaving ? "Saving…" : "Create Quiz Question"}
               </button>
             </form>
+            </FadeIn>
           )}
         </>
       )}

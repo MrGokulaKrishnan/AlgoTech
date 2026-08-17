@@ -1,3 +1,4 @@
+import { FadeIn } from "../components/Animations";
 import { ArrowRight, LogIn, UserPlus } from "lucide-react";
 import { FormEvent, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
@@ -51,6 +52,7 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
   return (
     <section className="relative grid min-h-[calc(100vh-8rem)] place-items-center overflow-hidden px-4 py-16 sm:py-24 bg-black">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.15),transparent_55%)]" />
+      <FadeIn variant="scale">
       <div className="panel w-full max-w-lg p-8 sm:p-12 border-emerald-900/40 bg-black/90 shadow-[0_0_50px_rgba(16,185,129,0.08)]">
         <Link to="/" className="flex items-center gap-2">
           <Logo size="md" />
@@ -74,7 +76,7 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 autoComplete="name"
-                className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all duration-300"
               />
             </label>
           )}
@@ -86,7 +88,7 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               autoComplete="email"
-              className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all duration-300"
             />
           </label>
           <label className="grid gap-1.5 text-base font-medium text-zinc-200">
@@ -99,7 +101,7 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               autoComplete={isRegister ? "new-password" : "current-password"}
-              className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all duration-300"
             />
           </label>
           {isRegister && (
@@ -113,7 +115,7 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
                 value={confirmPassword}
                 onChange={(event) => setConfirmPassword(event.target.value)}
                 autoComplete="new-password"
-                className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="rounded-xl border border-emerald-950 bg-black px-4 py-3.5 text-base text-white placeholder-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all duration-300"
               />
             </label>
           )}
@@ -138,6 +140,7 @@ export const AuthPage = ({ mode }: AuthPageProps) => {
           </Link>
         </p>
       </div>
+      </FadeIn>
     </section>
   );
 };

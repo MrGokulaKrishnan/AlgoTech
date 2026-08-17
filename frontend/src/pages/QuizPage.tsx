@@ -1,3 +1,4 @@
+import { FadeIn, StaggerContainer, StaggerItem } from "../components/Animations";
 import { ArrowRight, CheckCircle2, Circle, CircleX, HelpCircle, LoaderCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -75,9 +76,11 @@ export const QuizPage = () => {
 
   return (
     <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 bg-black">
-      <p className="eyebrow">Topic Knowledge Check</p>
-      <h1 className="mt-3 text-4xl font-black tracking-tight text-white">Test what you can explain.</h1>
-      <p className="mt-3 text-lg text-zinc-400">Short quizzes give immediate feedback and add to your saved learning record.</p>
+      <FadeIn>
+        <p className="eyebrow">Topic Knowledge Check</p>
+        <h1 className="mt-3 text-4xl font-black tracking-tight text-white">Test what you can explain.</h1>
+        <p className="mt-3 text-lg text-zinc-400">Short quizzes give immediate feedback and add to your saved learning record.</p>
+      </FadeIn>
 
       <div className="panel mt-8 p-6 sm:p-7 border-emerald-950/80 bg-black">
         <label className="grid max-w-sm gap-1.5 text-xs font-bold text-zinc-300">
@@ -116,7 +119,7 @@ export const QuizPage = () => {
             </Link>
           </div>
         ) : question ? (
-          <div className="mt-8">
+          <FadeIn className="mt-8">
             <div className="flex items-center justify-between text-xs">
               <span className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-bold text-emerald-400">
                 {selectedTopic?.name ?? "Quiz"}
@@ -128,18 +131,18 @@ export const QuizPage = () => {
 
             <h2 className="mt-6 text-2xl font-bold leading-9 text-white">{question.questionText}</h2>
 
-            <div className="mt-6 grid gap-3">
+            <StaggerContainer className="mt-6 grid gap-3">
               {question.options.map((option) => {
                 const isSelected = selectedOption === option.id;
                 const isCorrect = result?.correctOptionId === option.id;
                 const isWrongSelected = result && isSelected && !result.correct;
                 return (
-                  <button
-                    type="button"
-                    key={option.id}
+                  <StaggerItem key={option.id}>
+                    <button
+                      type="button"
                     disabled={Boolean(result)}
                     onClick={() => setSelectedOption(option.id)}
-                    className={`flex items-center gap-3.5 rounded-xl border p-4 text-left font-medium transition-all ${
+                    className={`flex items-center gap-3.5 rounded-xl border p-4 text-left font-medium transition-all duration-300 hover:scale-[1.02] ${
                       isCorrect
                         ? "border-emerald-500 bg-emerald-500/20 text-emerald-100 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
                         : isWrongSelected
@@ -157,14 +160,16 @@ export const QuizPage = () => {
                       <Circle className={`shrink-0 ${isSelected ? "text-emerald-400" : "text-zinc-600"}`} />
                     )}
                     <span>{option.text}</span>
-                  </button>
+                    </button>
+                  </StaggerItem>
                 );
               })}
-            </div>
+            </StaggerContainer>
 
             {result && (
-              <div
-                className={`mt-6 rounded-xl border p-4.5 ${
+              <FadeIn>
+                <div
+                  className={`mt-6 rounded-xl border p-4.5 ${
                   result.correct
                     ? "border-emerald-500/40 bg-emerald-950/40 text-emerald-100"
                     : "border-amber-500/40 bg-amber-950/40 text-amber-100"
@@ -172,7 +177,8 @@ export const QuizPage = () => {
               >
                 <p className="font-bold text-base">{result.correct ? "Correct — nice work!" : "Not quite — here is the key idea."}</p>
                 <p className="mt-2 text-sm leading-7 text-zinc-300">{result.explanation}</p>
-              </div>
+                </div>
+              </FadeIn>
             )}
 
             <div className="mt-6 flex justify-end">
@@ -186,7 +192,7 @@ export const QuizPage = () => {
                 </button>
               )}
             </div>
-          </div>
+          </FadeIn>
         ) : (
           <div className="py-12 text-center text-zinc-500">There are no questions for this topic yet.</div>
         )}
