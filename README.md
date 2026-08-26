@@ -1,157 +1,244 @@
-AlgoVisual — Interactive Data Structures & Algorithms Platform
+AlgoVisual
 
-«An interactive platform for learning Data Structures and Algorithms through step-by-step visualizations, algorithm explanations, quizzes, and progress tracking.»
+Interactive Data Structures and Algorithms Learning Platform
 
-""Frontend - Vercel" (https://img.shields.io/badge/Frontend-Vite%20%7C%20React%2018%20%7C%20TypeScript-10B981?style=for-the-badge&logo=react)" (https://algotech-seven.vercel.app/)
-""Backend - Render" (https://img.shields.io/badge/Backend-Spring%20Boot%203.5%20%7C%20Java%2017-00E676?style=for-the-badge&logo=springboot)" (https://algovisual-hsrl.onrender.com)
-""Database - MongoDB Atlas" (https://img.shields.io/badge/Database-MongoDB%20Atlas-47A248?style=for-the-badge&logo=mongodb)" (https://www.mongodb.com/cloud/atlas)
-""License - MIT" (https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)" (LICENSE)
+AlgoVisual is a full-stack web application for learning Data Structures and Algorithms through interactive, step-by-step visualizations.
 
----
-
-Live Deployments
-
-- Frontend: https://algotech-seven.vercel.app/
-- Backend API: https://algovisual-hsrl.onrender.com
-- Database: MongoDB Atlas M0 Cluster
+The platform combines a React + TypeScript frontend, Spring Boot REST API, JWT-based authentication, and MongoDB Atlas to provide algorithm visualizations, learning content, quizzes, and persistent user progress.
 
 ---
 
-Overview
+Project Overview
 
-AlgoVisual is a full-stack educational platform designed to make Data Structures and Algorithms easier to understand through interactive visualizations.
+AlgoVisual is designed around an interactive learning workflow rather than static algorithm documentation.
 
-The platform combines a React-based visualization engine with a Spring Boot REST API and MongoDB Atlas for authentication, content management, quizzes, and user progress persistence.
+Users can:
 
-The application currently focuses on interactive Searching and Sorting visualizations with step-by-step execution, playback controls, keyboard shortcuts, algorithm explanations, and learning progress tracking.
+- Explore DSA topics and algorithms
+- Execute algorithms step by step
+- Control visualization playback
+- Inspect algorithm state changes
+- Read algorithm explanations
+- Test their understanding through quizzes
+- Track learning progress
 
----
-
-Architecture
-
-                         PRODUCTION ARCHITECTURE
-
-                             Users
-                               |
-                               | HTTPS
-                               v
-                  +---------------------------+
-                  |      Vercel Frontend      |
-                  |---------------------------|
-                  | React 18                  |
-                  | Vite + TypeScript         |
-                  | Tailwind CSS               |
-                  | Client-side DSA Engine     |
-                  | Responsive UI              |
-                  +-------------+-------------+
-                                |
-                                | REST API
-                                v
-                  +---------------------------+
-                  |       Render Backend      |
-                  |---------------------------|
-                  | Spring Boot 3.5            |
-                  | Java 17                    |
-                  | JWT Authentication         |
-                  | Spring Security            |
-                  | REST Controllers           |
-                  | Service Layer              |
-                  +-------------+-------------+
-                                |
-                                | MongoDB Driver
-                                | TLS Connection
-                                v
-                  +---------------------------+
-                  |      MongoDB Atlas        |
-                  |---------------------------|
-                  | Users                      |
-                  | Topics                     |
-                  | Algorithms                 |
-                  | Quizzes                    |
-                  | User Progress              |
-                  +---------------------------+
-
----
-
-Key Features
-
-Interactive Algorithm Visualizations
-
-- Step-by-step visualization of Searching and Sorting algorithms
-- Play and pause animation controls
-- Adjustable animation speed
-- Step forward and backward controls
-- Algorithm state management
-- Detailed step-by-step explanations
-- Reset functionality
-
-Keyboard Controls
-
-Key| Action
-"Space"| Play / Pause
-"ArrowLeft"| Previous Step
-"ArrowRight"| Next Step
-"R"| Reset
-
-Authentication and Progress Tracking
-
-- User registration and login
-- JWT-based authentication
-- Spring Security integration
-- Secure API endpoints
-- Persistent user progress
-- MongoDB-backed learning history
-
-Quiz System
-
-- Topic-based quizzes
-- Instant answer validation
-- Score calculation
-- Explanation cards
-- Learning progress integration
-
-Admin Dashboard
-
-- Platform statistics
-- Algorithm management
-- Quiz question management
-- Content administration
-
-Design System
-
-- AMOLED-inspired pure black interface
-- Emerald accent color palette
-- High-contrast UI
-- Responsive layouts
-- Tailwind CSS design tokens
-- Framer Motion animations
-- Lucide icon system
+The backend provides authentication, content management, quiz APIs, and progress persistence through a RESTful architecture.
 
 ---
 
 Technology Stack
 
-Layer| Technology| Purpose
-Frontend| React 18| User interface
-Build Tool| Vite| Development and production builds
-Language| TypeScript| Type-safe frontend development
-Styling| Tailwind CSS| UI styling and design system
-Animation| Framer Motion| Interface and visualization animations
-Icons| Lucide| UI iconography
-Backend| Spring Boot 3.5| REST API and application services
-Language| Java 17| Backend development
-Security| Spring Security + JWT| Authentication and authorization
-Database| MongoDB Atlas| Cloud document database
-Data Access| Spring Data MongoDB| Database integration
-Containerization| Docker| Backend containerization
-Frontend Hosting| Vercel| Production frontend deployment
-Backend Hosting| Render| Production API deployment
+Category| Technologies
+Frontend| React 18, TypeScript, Vite
+UI| Tailwind CSS, Framer Motion, Lucide
+Backend| Java 17, Spring Boot 3.5
+Security| Spring Security, JWT
+API| RESTful APIs
+Database| MongoDB Atlas
+Data Access| Spring Data MongoDB
+Containerization| Docker
+Frontend Deployment| Vercel
+Backend Deployment| Render
+
+---
+
+System Architecture
+
+                         ┌─────────────────────┐
+                         │        Client       │
+                         │      Web Browser    │
+                         └──────────┬──────────┘
+                                    │
+                                    │ HTTPS
+                                    ▼
+                         ┌─────────────────────┐
+                         │      Frontend       │
+                         │                     │
+                         │ React 18            │
+                         │ TypeScript          │
+                         │ Vite                │
+                         │ Tailwind CSS        │
+                         │ Visualization Engine│
+                         └──────────┬──────────┘
+                                    │
+                                    │ REST / JSON
+                                    ▼
+                         ┌─────────────────────┐
+                         │       Backend       │
+                         │                     │
+                         │ Spring Boot 3.5     │
+                         │ Java 17             │
+                         │ Spring Security     │
+                         │ JWT Authentication  │
+                         │ REST Controllers    │
+                         │ Service Layer       │
+                         └──────────┬──────────┘
+                                    │
+                                    │ MongoDB Driver
+                                    ▼
+                         ┌─────────────────────┐
+                         │     MongoDB Atlas   │
+                         │                     │
+                         │ Users               │
+                         │ Topics              │
+                         │ Algorithms          │
+                         │ Quizzes             │
+                         │ User Progress       │
+                         └─────────────────────┘
+
+---
+
+Core Features
+
+Algorithm Visualization
+
+The visualization engine executes algorithms as a sequence of discrete states.
+
+Supported controls include:
+
+- Play / Pause
+- Step Forward
+- Step Backward
+- Reset
+- Animation Speed Control
+- Step-by-Step Explanations
+- Keyboard Navigation
+
+Keyboard Controls
+
+Shortcut| Action
+"Space"| Play / Pause
+"←"| Previous Step
+"→"| Next Step
+"R"| Reset
+
+Authentication
+
+- User registration
+- User login
+- JWT token-based authentication
+- Spring Security filter chain
+- Protected API endpoints
+- Persistent user sessions
+
+Learning Content
+
+- DSA topics
+- Algorithm descriptions
+- Algorithm source code
+- Topic-based organization
+- Learning roadmaps
+
+Quiz System
+
+- Topic-based questions
+- Answer submission
+- Instant feedback
+- Score calculation
+- Explanation for answers
+
+Progress Tracking
+
+Authenticated users can persist their learning progress through the backend API.
+
+Progress data is stored in MongoDB Atlas and associated with the authenticated user.
+
+Administration
+
+The application includes an administrative interface for managing:
+
+- Algorithms
+- Quiz questions
+- Platform content
+- Platform statistics
+
+---
+
+Visualization Engine
+
+The frontend uses a state-driven visualization model.
+
+Algorithm
+    │
+    ▼
+Generate Execution States
+    │
+    ▼
+State Sequence
+    │
+    ├── State 0
+    ├── State 1
+    ├── State 2
+    ├── State 3
+    └── ...
+          │
+          ▼
+   Visualization Engine
+          │
+          ▼
+      UI Rendering
+
+This approach allows the user to move through an algorithm execution history instead of relying only on continuous animation.
+
+It also enables:
+
+- Forward and backward navigation
+- Deterministic visualization states
+- Reset functionality
+- Playback control
+- Step-specific explanations
+
+---
+
+API Architecture
+
+The backend follows a layered Spring Boot architecture.
+
+HTTP Request
+     │
+     ▼
+Controller
+     │
+     ▼
+Service
+     │
+     ▼
+Repository
+     │
+     ▼
+MongoDB Atlas
+
+Authentication API
+
+Method| Endpoint| Purpose
+"POST"| "/api/auth/register"| Register user
+"POST"| "/api/auth/login"| Authenticate user
+
+Algorithm API
+
+Method| Endpoint| Purpose
+"GET"| "/api/topics"| Retrieve DSA topics
+"GET"| "/api/algorithms"| Retrieve algorithms
+"GET"| "/api/algorithms/{id}"| Retrieve algorithm details
+
+Quiz API
+
+Method| Endpoint| Purpose
+"GET"| "/api/quizzes?topicId={id}"| Retrieve topic questions
+"POST"| "/api/quizzes/{questionId}/submit"| Submit answer
+
+Progress API
+
+Method| Endpoint| Purpose
+"GET"| "/api/progress"| Retrieve user progress
+"POST"| "/api/progress"| Save user progress
 
 ---
 
 Repository Structure
 
 AlgoVisual/
+│
 ├── backend/
 │   ├── src/
 │   │   ├── controllers/
@@ -159,6 +246,7 @@ AlgoVisual/
 │   │   ├── entities/
 │   │   ├── repositories/
 │   │   └── security/
+│   │
 │   ├── pom.xml
 │   └── Dockerfile
 │
@@ -168,12 +256,13 @@ AlgoVisual/
 │   │   ├── pages/
 │   │   ├── visualizers/
 │   │   └── data/
+│   │
 │   ├── vercel.json
 │   └── tailwind.config.js
 │
 ├── Dockerfile
-├── render.yaml
 ├── docker-compose.yml
+├── render.yaml
 └── README.md
 
 ---
@@ -182,19 +271,17 @@ Local Development
 
 Prerequisites
 
-Ensure the following are installed:
-
-- Node.js 20+ or 22+
+- Node.js 20+
 - JDK 17+
 - Maven 3.9+
-- MongoDB or a MongoDB Atlas connection
+- MongoDB or MongoDB Atlas
 
 Backend
 
 cd backend
 mvn spring-boot:run
 
-The backend API will be available at:
+Backend:
 
 http://localhost:8080
 
@@ -204,105 +291,119 @@ cd frontend
 npm install
 npm run dev
 
-The frontend development server will be available at:
+Frontend:
 
 http://localhost:5173
 
 ---
 
-API Reference
+Production Deployment
 
-Authentication
+                    Production Environment
 
-Method| Endpoint| Description
-"POST"| "/api/auth/register"| Register a new user
-"POST"| "/api/auth/login"| Authenticate and receive a JWT
+                         Internet
+                            │
+                            ▼
+                  ┌─────────────────┐
+                  │     Vercel      │
+                  │    Frontend     │
+                  └────────┬────────┘
+                           │
+                           │ HTTPS
+                           ▼
+                  ┌─────────────────┐
+                  │     Render      │
+                  │     Backend     │
+                  │  Spring Boot    │
+                  └────────┬────────┘
+                           │
+                           │ TLS
+                           ▼
+                  ┌─────────────────┐
+                  │ MongoDB Atlas   │
+                  │    Database     │
+                  └─────────────────┘
 
-Topics and Algorithms
-
-Method| Endpoint| Description
-"GET"| "/api/topics"| Retrieve available DSA topics
-"GET"| "/api/algorithms"| Retrieve algorithms
-"GET"| "/api/algorithms/{id}"| Retrieve algorithm details
-
-Quizzes and Progress
-
-Method| Endpoint| Description
-"GET"| "/api/quizzes?topicId={id}"| Retrieve topic quiz questions
-"POST"| "/api/quizzes/{questionId}/submit"| Submit a quiz answer
-"GET"| "/api/progress"| Retrieve authenticated user progress
-"POST"| "/api/progress"| Save learning progress
-
----
-
-Deployment
-
-AlgoVisual uses a separated frontend and backend deployment architecture.
+Production URLs
 
 Frontend
-React + Vite
-      |
-      v
-   Vercel
-      |
-      | HTTPS REST API
-      v
-Backend
-Spring Boot + Java
-      |
-      v
-   Render
-      |
-      v
+
+https://algotech-seven.vercel.app/
+
+Backend API
+
+https://algovisual-hsrl.onrender.com
+
+Database
+
 MongoDB Atlas
 
-Production Services
+---
 
-- Frontend: Vercel
-- Backend: Render
-- Database: MongoDB Atlas
-- Containerization: Docker
+Learning Flow
+
+Topic
+  │
+  ▼
+Algorithm
+  │
+  ▼
+Explanation
+  │
+  ▼
+Interactive Visualization
+  │
+  ▼
+Quiz
+  │
+  ▼
+Progress
 
 ---
 
-Learning Workflow
+Engineering Highlights
 
-The platform follows a structured learning workflow:
-
-Select Topic
-     |
-     v
-Explore Algorithm
-     |
-     v
-Read Explanation
-     |
-     v
-Run Visualization
-     |
-     v
-Control Execution
-     |
-     v
-Complete Quiz
-     |
-     v
-Track Progress
+- Full-stack application using React and Spring Boot
+- RESTful backend architecture
+- JWT-based authentication and authorization
+- MongoDB persistence using Spring Data MongoDB
+- Docker-based backend deployment
+- Client-side algorithm visualization engine
+- Deterministic step-by-step algorithm execution
+- Responsive frontend architecture
+- Separate production frontend and backend deployments
+- Persistent learning progress for authenticated users
 
 ---
 
-Project Goals
+Future Improvements
 
-AlgoVisual is designed to:
+Potential extensions include:
 
-- Make algorithm execution easier to understand visually
-- Provide an interactive alternative to static algorithm explanations
-- Help beginners understand algorithm state changes step by step
-- Combine visualization, explanations, quizzes, and progress tracking
-- Provide a practical full-stack implementation using modern web technologies
+- Additional graph and tree visualizations
+- Graph traversal algorithms
+- Dynamic programming visualizations
+- Code execution support
+- Algorithm complexity comparison
+- User-specific learning analytics
+- Expanded quiz and assessment system
+- Additional administrator capabilities
 
 ---
 
 License
 
-This project is open-source and available under the "MIT License" (LICENSE).
+This project is licensed under the MIT License.
+
+See "LICENSE" (LICENSE) for details.
+
+---
+
+Author
+
+Gokulakrishnan K
+
+Computer Science Engineering
+Java Backend / Full-Stack Developer
+
+GitHub: "@MrGokulaKrishnan" (https://github.com/MrGokulaKrishnan)
